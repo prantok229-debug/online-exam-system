@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+void startExam();
+
+int main() {
+    char username[50];
+
+    printf("====== Online Examination System ======\n");
+    printf("Enter username to login: ");
+    scanf("%s", username);
+
+    printf("\nWelcome, %s! Login successful.\n", username);
+    printf("Your exam will start now.\n\n");
+
+    startExam();
+
+    return 0;
+}
+
+void startExam() {
+    int answer, score = 0;
+    int timeLeft = 30; // 30 second exam timer
+    time_t start, now;
+
+    printf("You have 30 seconds to finish the exam.\n");
+    printf("Timer starts now...\n\n");
+
+    time(&start);
+
+   
+    time(&now);
+    if (difftime(now, start) > timeLeft) goto TIME_UP;
+
+    printf("1) What is 2 + 2?\n");
+    printf("   1. 3\n");
+    printf("   2. 4\n");
+    printf("   3. 5\n");
+    printf("Enter answer: ");
+    scanf("%d", &answer);
+    if (answer == 2) score++;
+
+    time(&now);
+    if (difftime(now, start) > timeLeft) goto TIME_UP;
+
+    printf("\n2) Capital of France?\n");
+    printf("   1. London\n");
+    printf("   2. Berlin\n");
+    printf("   3. Paris\n");
+    printf("Enter answer: ");
+    scanf("%d", &answer);
+    if (answer == 3) score++;
+
+    time(&now);
+    if (difftime(now, start) > timeLeft) goto TIME_UP;
+
+    printf("\n3) C language was developed by?\n");
+    printf("   1. Dennis Ritchie\n");
+    printf("   2. Elon Musk\n");
+    printf("   3. Charles Babbage\n");
+    printf("Enter answer: ");
+    scanf("%d", &answer);
+    if (answer == 1) score++;
+
+TIME_UP:
+
+    printf("\n========== Exam Finished ==========\n");
+    printf("Your Score: %d out of 3\n", score);
+
+    if (difftime(now, start) > timeLeft) {
+        printf("Reason: Time Up!\n");
+    }
+
+    if (score == 3) printf("Excellent!\n");
+    else if (score == 2) printf("Good Job!\n");
+    else printf("You need improvement.\n");
+}
