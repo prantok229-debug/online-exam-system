@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Examination System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h2>Online Examination System</h2>
+
+  <!-- Login Section -->
+  <div id="loginBox">
+    <h3>Student Login</h3>
+    <input type="text" id="username" placeholder="Enter Username">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Exam Section -->
+  <div id="examBox" style="display:none;">
+    <h3>Welcome, <span id="userNameLabel"></span></h3>
+    <p><b>Timer:</b> <span id="timer">60</span> seconds</p>
+
+    <div id="questions"></div>
+
+    <button onclick="submitExam()">Submit Exam</button>
+  </div>
+
+  <!-- Result Section -->
+  <div id="resultBox" style="display:none;">
+    <h3>Exam Submitted</h3>
+    <p>Your Score: <span id="score"></span>/3</p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
